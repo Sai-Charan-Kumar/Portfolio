@@ -343,8 +343,8 @@ p {
 
 /* Contact css*/
 .contact-con {
-  display: grid;
-  grid-template-columns: 1fr 1.5fr;
+  display: flex;
+  flex-direction: column;
   gap: 64px;
 }
 
