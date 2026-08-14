@@ -93,6 +93,13 @@ p {
   text-decoration: none;
 }
 
+.home-page{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+}
+
 .btn-blue {
   background-color: var(--accent-1);
   color: white;
