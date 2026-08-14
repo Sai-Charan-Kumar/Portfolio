@@ -11,7 +11,7 @@ function ProjectCard({ title, description, techStack, image, link, id }) {
         <p className="project-desc">{description}</p>
         
         {showDetails && (
-          <div className="project-extra" style={{ marginBottom: '16px', fontSize: '14px', color: 'var(--text-1)'}}>
+          <div className="project-extra">
             <p>ID: {id}</p>
             <p>Built primarily with {techStack.join(', ')}.</p>
           </div>
@@ -23,16 +23,16 @@ function ProjectCard({ title, description, techStack, image, link, id }) {
           ))}
         </div>
       </div>
-      <div className="project-actions" style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-        <button onClick={() => setShowDetails(!showDetails)} className="btn btn-blue" style={{ fontSize: '14px', padding: '6px 14px'}}>
+      <div className="project-actions">
+        <button onClick={() => setShowDetails(!showDetails)} className="btn btn-blue pro">
           {showDetails ? 'Hide Details' : 'View Details'}
         </button>
         {link && (
-          <a href={link} target="_blank" rel="noopener noreferrer" className="btn btn-black" style={{ fontSize: '14px', padding: '6px 14px'}}>
+          <a href={link} target="_blank" rel="noopener noreferrer" className="btn btn-black pro">
             Source
           </a>
         )}
-        <Link to={`/projects/${id}`} className="btn btn-black" style={{ fontSize: '14px', padding: '6px 14px'}}>
+        <Link to={`/projects/${id}`} className="btn btn-black pro">
           Page
         </Link>
       </div>
