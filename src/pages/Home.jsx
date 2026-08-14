@@ -14,14 +14,14 @@ function Home() {
 
   if (loading) {
     return (
-      <div className="home-page" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '50vh' }}>
+      <div className="home-page">
         <h2>Loading...</h2>
       </div>
     );
   }
 
   return (
-    <div className="home-page">
+    <div>
       <section className="info">
         <h1>Sai Charan Kumar</h1>
         <p className="text-col">Computer Science & Engineering Student @ NITW</p>
