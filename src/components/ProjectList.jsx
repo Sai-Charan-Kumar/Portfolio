@@ -1,7 +1,7 @@
 import React from 'react';
 import ProjectCard from './projectcard';
 
-function ProjectList({ projects, theme }) {
+function ProjectList({ projects }) {
   return (
     <div className="projects-grid">
       {projects.map((project) => (
@@ -13,7 +13,6 @@ function ProjectList({ projects, theme }) {
           techStack={project.techStack}
           image={project.image}
           link={project.link}
-          theme={theme}
         />
       ))}
     </div>
