@@ -77,7 +77,10 @@ p {
   font-size: 16px;
   margin-bottom: 16px;
 }
-
+.not-found-page{
+  text-align: center;
+  padding: 100px 0;
+}
 .btn {
   display: inline-flex;
   align-items: center;
