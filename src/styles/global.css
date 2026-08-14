@@ -252,7 +252,9 @@ p {
   flex-direction: column;
   gap: 64px;
 }
-
+.about-sec{
+  padding: 64px 0 32px;
+}
 .info {
   padding: 64px 0 32px;
 }
@@ -293,8 +295,18 @@ p {
   height: 100%;
 }
 
+.project-extra{
+  margin-bottom: 16px;
+  font-size: 14px;
+  color: var(--text-1);
+}
 .project-title {
   margin-bottom: 24px;
+}
+.project-actions{
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
 }
 
 .project-tech {
