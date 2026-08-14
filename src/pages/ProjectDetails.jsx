@@ -8,29 +8,29 @@ function ProjectDetails() {
 
   if (!project) {
     return (
-      <div className="project-details" style={{ textAlign: 'center', padding: '64px 0' }}>
+      <div className="project-details">
         <h2>Project Not Found</h2>
-        <p style={{ marginBottom: '24px' }}>We couldn't locate a project with ID: {projectId}</p>
+        <p>We couldn't locate a project with ID: {projectId}</p>
         <Link to="/projects" className="btn btn-blue">Back to Projects</Link>
       </div>
     );
   }
 
   return (
-    <div className="project-details">
-      <Link to="/projects" className="btn btn-black" style={{ marginBottom: '32px' }}>
+    <div >
+      <Link to="/projects" className="btn btn-black mar">
         &larr; Back to Projects
       </Link>
       <h1>{project.title}</h1>
-      <p className="text-col" style={{ marginTop: '8px' }}>Project ID: {project.id}</p>
+      <p className="text-col">Project ID: {project.id}</p>
       
-      <div className="project-tech" style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '24px' }}>
+      <div className="project-tech">
         {project.techStack.map((tech, idx) => (
           <span key={idx} className="tech">{tech}</span>
         ))}
       </div>
       
-      <p style={{ fontSize: '18px', marginBottom: '32px', maxWidth: '800px', lineHeight: '1.8' }}>
+      <p className = "project-para">
         {project.fullDescription || project.description}
       </p>
       
