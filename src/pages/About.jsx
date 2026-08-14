@@ -3,7 +3,7 @@ import React from 'react';
 function About() {
   return (
     <div className="about-page">
-      <section style={{ padding: '64px 0 32px' }}>
+      <section className="about-sec">
         <h2>About Me</h2>
         <div className="about-con">
           <p>I am currently studying Computer Science and Engineering (CSE) at the National Institute of Technology, Warangal (NITW).</p>
