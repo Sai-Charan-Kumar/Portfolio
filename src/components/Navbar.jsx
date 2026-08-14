@@ -18,7 +18,7 @@ function Navbar({ theme, toggleTheme }) {
           <NavLink to="/skills" className={({ isActive }) => (isActive ? 'nav-link active-link' : 'nav-link')}>Skills</NavLink>
           <NavLink to="/contact" className={({ isActive }) => (isActive ? 'nav-link active-link' : 'nav-link')}>Contact</NavLink>
           
-          <button onClick={toggleTheme} className="theme-toggle btn btn-black" style={{ padding: '6px 14px', fontSize: '14px' }}>
+          <button onClick={toggleTheme} className="theme-toggle btn btn-black pro">
             {theme === 'light' ? '🌙 Dark' : '☀️ Light'}
           </button>
         </div>
