@@ -1,23 +1,43 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { projectsData } from '../data/projects';
 
 function ProjectDetails() {
   const { projectId } = useParams();
-  const project = projectsData.find(p => p.id === projectId);
+  const [project, setProject] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  if (!project) {
+  useEffect(() => {
+    fetch(`${import.meta.env.VITE_API_URL}/api/projects/${projectId}`)
+      .then(async (response) => {
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.error || 'Failed to fetch project');
+        return data;
+      })
+      .then(data => {
+        setProject(data);
+        setLoading(false);
+      })
+      .catch(err => {
+        setError(err.message);
+        setLoading(false);
+      });
+  }, [projectId]);
+
+  if (loading) return <div className="project-details"><h2>Loading...</h2></div>;
+  
+  if (error) {
     return (
       <div className="project-details">
         <h2>Project Not Found</h2>
-        <p>We couldn't locate a project with ID: {projectId}</p>
+        <p>{error}</p>
         <Link to="/projects" className="btn btn-blue">Back to Projects</Link>
       </div>
     );
   }
 
   return (
-    <div >
+    <div>
       <Link to="/projects" className="btn btn-black mar">
         &larr; Back to Projects
       </Link>
@@ -30,7 +50,7 @@ function ProjectDetails() {
         ))}
       </div>
       
-      <p className = "project-para">
+      <p className="project-para">
         {project.fullDescription || project.description}
       </p>
       
