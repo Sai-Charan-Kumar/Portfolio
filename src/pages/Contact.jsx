@@ -3,15 +3,35 @@ import React, { useState } from 'react';
 function Contact() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
+  const [serverError, setServerError] = useState(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setServerError(null);
+    setIsSubmitting(true);
 
-    setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
+    try {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/contact`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
+      
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Something went wrong');
+      }
+
+      setSubmitted(true);
       setFormData({ name: '', email: '', message: '' });
-    }, 3000);
+      setTimeout(() => setSubmitted(false), 3000);
+    } catch (err) {
+      setServerError(err.message);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -28,6 +48,7 @@ function Contact() {
         </div>
         
         <form className="contact-form card" onSubmit={handleSubmit}>
+          {serverError && <div style={{ color: 'red', marginBottom: '1rem' }}>Error: {serverError}</div>}
           <div className="form-group">
             <label htmlFor="name">Name</label>
             <input 
@@ -61,8 +82,13 @@ function Contact() {
               placeholder="How can I help you?"
             ></textarea>
           </div>
-          <button type="submit" className="btn btn-blue w-full" disabled={!formData.name || !formData.email || !formData.message} style={ (!formData.name || !formData.email || !formData.message) ? { opacity: 0.5, cursor: 'not-allowed' } : {} }>
-            {submitted ? 'Message Sent!' : 'Send Message'}
+          <button 
+            type="submit" 
+            className="btn btn-blue w-full" 
+            disabled={!formData.name || !formData.email || !formData.message || isSubmitting} 
+            style={ (!formData.name || !formData.email || !formData.message || isSubmitting) ? { opacity: 0.5, cursor: 'not-allowed' } : {} }
+          >
+            {isSubmitting ? 'Sending...' : submitted ? 'Message Sent!' : 'Send Message'}
           </button>
         </form>
       </div>
@@ -70,4 +96,4 @@ function Contact() {
   );
 }
 
-export default Contact; 
+export default Contact;
