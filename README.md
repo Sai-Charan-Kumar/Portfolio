@@ -20,6 +20,18 @@ To run this project locally, follow these steps:
    ```
    (Outputs to the `dist` directory by default).
 
+4. This project requires two terminal windows to run both the frontend and the backend simultaneously.
+   Backend Setup (Express)
+   Navigate to the server directory, install dependencies, and start the backend:
+   ```bash
+   cd server
+   npm install
+   npm start
+  ```
+## Storage Approach
+
+According to the assignment guidelines, this backend utilizes an in-memory JavaScript array for storing project data and contact form submissions
+
 ## Component Tree Structure
 
 This project follows a logical component structure utilizing React Router for navigation:
@@ -39,6 +51,25 @@ App
 │   └── NotFound (Catch-all 404 Route)
 └── Footer
 ```
+## API Endpoints
+
+## API Endpoints
+
+Note: The `GET /api/contact` endpoint is intentionally unauthenticated and open for assignment evaluation purposes.
+
+## API Endpoints
+
+Note: The `GET /api/contact` endpoint is intentionally unauthenticated and open for assignment evaluation purposes.
+
+| **Endpoint**        |**Method**| **Description** | **Sample Response / Body** |
+|---------------------|----------|-----------------|----------------------------|
+| `/`                 | GET      | API health check | `{ "status": "ok" }` |
+| `/api/projects`     | GET      | Fetches all projects | `[ { "id": "1", "title": "Project One", ... } ]` |
+| `/api/projects/:id` | GET      | Fetches a single project matching the given ID | `{ "id": "1", "title": "Project One", ... }` |
+| `/api/projects/:id` | GET      | Invalid ID (Failure) | **404:** `{ "error": "Project not found" }` |
+| `/api/contact`      | POST     | Submits contact form | **Body:** `{ "name": "A", "email": "a@b.com", "message": "Hi" }`<br>**Response:** `{ "success": true }` |
+| `/api/contact`      | POST     | Invalid email format (Failure) | **400:** `{ "error": "Invalid email format." }` |
+| `/api/contact`      | GET      | Lists all stored contact submissions | `[ { "name": "A", "email": "a@b.com", ... } ]` |
 
 ## State Lifting Explanation
 
