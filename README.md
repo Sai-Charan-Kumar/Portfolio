@@ -30,6 +30,7 @@ To run this project locally, follow these steps:
 ## Storage Approach
 
 According to the assignment guidelines, this backend utilizes an in-memory JavaScript array for storing project data and contact form submissions.
+
 Note: Since the data is stored in memory, it will be reset whenever the backend server is restarted.
 
 ## Component Tree Structure
