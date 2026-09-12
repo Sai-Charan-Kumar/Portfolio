@@ -4,33 +4,33 @@
 
 To run this project locally, follow these steps:
 
-1. **Install Dependencies**: Ensure you have Node.js installed, then run the following in your terminal:
+1. **Install Frontend Dependencies**: Ensure you have Node.js installed, then run the following in your terminal:
    ```bash
    npm install
    ```
-
-2. **Run Development Server**: Start the local server to view the portfolio:
+2. **Install Backend Dependencies**: Open a second terminal and navigate to the server directory:
+   ```bash
+   cd server
+   npm install
+   ```
+3. **Run Development Server**: Start the local server to view the portfolio:
    ```bash
    npm run dev
    ```
-
-3. **Production Build**: Generate the production-ready build files:
+4. **Start the backend** : From the server directory, start the Express backend:
+   ```bash
+   npm start
+   ```
+5. **Production Build**: Generate the production-ready build files:
    ```bash
    npm run build
    ```
    (Outputs to the `dist` directory by default).
 
-4. This project requires two terminal windows to run both the frontend and the backend simultaneously.
-   Backend Setup (Express)
-   Navigate to the server directory, install dependencies, and start the backend:
-   ```bash
-   cd server
-   npm install
-   npm start
-  ```
 ## Storage Approach
 
-According to the assignment guidelines, this backend utilizes an in-memory JavaScript array for storing project data and contact form submissions
+According to the assignment guidelines, this backend utilizes an in-memory JavaScript array for storing project data and contact form submissions.
+Note: Since the data is stored in memory, it will be reset whenever the backend server is restarted.
 
 ## Component Tree Structure
 
@@ -51,12 +51,6 @@ App
 │   └── NotFound (Catch-all 404 Route)
 └── Footer
 ```
-## API Endpoints
-
-## API Endpoints
-
-Note: The `GET /api/contact` endpoint is intentionally unauthenticated and open for assignment evaluation purposes.
-
 ## API Endpoints
 
 Note: The `GET /api/contact` endpoint is intentionally unauthenticated and open for assignment evaluation purposes.
